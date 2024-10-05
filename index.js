@@ -1,3 +1,4 @@
+// Import Features
 import "./features/deathTracker"
 import "./features/partyJoin"
 import "./features/queueCommands"
@@ -10,10 +11,3 @@ import config from "./config"
 register("command",()=>{
     config.openGUI()
 }).setName("stytils").setAliases("sty")
-
-
-
-
-
-
-

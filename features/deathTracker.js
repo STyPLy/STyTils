@@ -16,7 +16,8 @@ register("worldLoad",()=> {
 
 
 register("chat", (name,event) => {  
-    if (!inDungeon()) return
+    if (!inDungeon()) return;
+    if(!config.autoShitter) return;
     let message = ChatLib.getChatMessage(event)
     if (message.includes('reconnected') || message.includes('Cata Level')) {return}
     if (message.includes('You') || message.includes(Player.getName())) {return}
