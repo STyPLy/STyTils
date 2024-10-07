@@ -21,7 +21,7 @@ register("chat", (name,event) => {
     let message = ChatLib.getChatMessage(event)
     if (message.includes('reconnected') || message.includes('Cata Level')) {return}
     if (message.includes('You') || message.includes(Player.getName())) {return}
-    if (!Deaths[name]) {Deaths[name] = 0;}
+    if (!Deaths[name]) {Deaths[name] = 1;}
 
     if (Deaths[name] == config.deathToShitters) {
         
@@ -32,7 +32,7 @@ register("chat", (name,event) => {
             console.log(e);
         }
         
-        data[name.toLowerCase()] = true;
+        data[name.toLowerCase()] = "Died too many times in dungeons - Auto Shitter";
         FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
         ChatLib.chat("&b[SL] Added " + name + " to the shitter list.");
         return;
