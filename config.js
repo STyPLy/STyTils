@@ -2,7 +2,7 @@ import { Color,@ColorProperty,@SwitchProperty,@NumberProperty,@Vigilant,@TextPro
 
 @Vigilant('STyTils', '§bSTyTils', {
     getCategoryComparator: () => (a, b) => {
-        const categories = ['Shitter List','Queue Commands', "Counters"];
+        const categories = ['Shitter List','Queue Commands', "Counters", "Misc"];
         return 1
     }
 })
@@ -51,14 +51,14 @@ class Config {
         description: "Counts how many slayers you have left",
         category: "Counters"
     })
-    slayerCounter = false
+    slayerCounter = false;
 
     @SwitchProperty({
         name: "Aatrox XP buff",
         description: "Only activate if Aatrox has xp buff perk",
         category: "Counters"
     })
-    aatroxBoost = false
+    aatroxBoost = false;
 
     @NumberProperty({
         name: "Slayer Tier",
@@ -68,7 +68,14 @@ class Config {
         max: 5,
         increment: 1
     })
-    tier = 4
+    tier = 4;
+
+    @SwitchProperty({
+        name: "Hide Profile ID",
+        description: "Hides profile ID on world load.",
+        category: "Misc"
+    })
+    hideID = false;
 
     constructor() {
         this.initialize(this);
