@@ -1,18 +1,21 @@
 
-register("command", (command, ign, reason="Manually added to shitter list.") => {
+register("command", (command, ign, ...reason) => {
     if (!command) {ChatLib.chat("&b[SL] USAGE: /sl <add/remove> <username>"); return};
+    
     let data = FileLib.read("STyTils","data.json")
     try {
         data = data ? JSON.parse(data) : {};
     } catch (e) {
         console.log(e);
     }
+    
     // if (!data) ChatLib.chat("&cCould not read data.json ?");
     switch (command) {
         case "add":
             if (!ign) return;
-            if (data[ign.toLowerCase()]) {ChatLib.chat(ign + " is already on the shitter list."); return}
-            data[ign.toLowerCase()] = reason;
+            if (data[ign.toLowerCase()]) {ChatLib.chat("&b[SL] " + ign + " is already on the shitter list."); return}
+
+            data[ign.toLowerCase()] = reason.length ? reason.join(" ") : "Manually added to shitter list.";
             FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true)
             ChatLib.chat("&b[SL] Added " + ign + " to the shitter list.")
             break;
@@ -37,6 +40,14 @@ register("command", (command, ign, reason="Manually added to shitter list.") => 
             })
             FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true)
             ChatLib.chat("&b[SL] Cleared the shitter list.")
+            break;
+        case "why":
+            if (!ign) return
+            
+            let why = data[ign.toLowerCase()]
+            if (!why) return ChatLib.chat("&b[SL] " + ign + " is not on the shitter list.");
+
+            ChatLib.chat("&b[SL] &f&l" + ign + "&r: &b" + why)
             break;
         default:   
             ChatLib.chat("&b[SL] USAGE: /sl <add/remove> <username>");
