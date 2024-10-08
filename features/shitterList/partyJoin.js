@@ -1,4 +1,4 @@
-import config from "../config"
+import config from "../../config"
 // Checks Shitter List on party finder join
 register("chat", (ign) => {
     let data = FileLib.read("STyTils","data.json");

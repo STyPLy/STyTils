@@ -1,9 +1,10 @@
 // Import Features
-import "./features/deathTracker"
-import "./features/partyJoin"
+import "./features/shitterList/deathTracker"
+import "./features/shitterList/partyJoin"
 import "./features/queueCommands"
-import "./features/slayerCounter"
-import './features/shitterlist'
+import "./features/Counters/slayerCounter"
+import './features/shitterList/shitterlist'
+import './features/misc/hideProfileID'
 
 import config from "./config"
 // Main Command

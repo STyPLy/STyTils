@@ -1,4 +1,4 @@
-import config from "../config"
+import config from "../../config"
 
 let tiers = {
 	1: 5,
