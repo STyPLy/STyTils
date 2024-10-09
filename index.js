@@ -1,6 +1,5 @@
 // Import Features
-import "./features/shitterList/deathTracker"
-import "./features/shitterList/partyJoin"
+
 import "./features/queueCommands"
 import "./features/Counters/slayerCounter"
 import './features/shitterList/shitterlist'
