@@ -1,5 +1,5 @@
-import "./features/shitterList/deathTracker"
-import "./features/shitterList/partyJoin"
+import "./deathTracker"
+import "./partyJoin"
 
 register("command", (command, ign, ...reason) => {
     if (!command) {ChatLib.chat("&b[SL] USAGE: /sl <add/remove> <username>"); return};
