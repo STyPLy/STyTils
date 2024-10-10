@@ -1,4 +1,4 @@
-import { Color,@ColorProperty,@SwitchProperty,@NumberProperty,@Vigilant,@TextProperty} from '../Vigilance/index';
+import { Color,@ColorProperty,@SwitchProperty,@SliderProperty,@Vigilant,@TextProperty} from '../Vigilance/index';
 
 @Vigilant('STyTils', '§bSTyTils', {
     getCategoryComparator: () => (a, b) => {
@@ -14,7 +14,7 @@ class Config {
     })
     autoShitter = true;
 
-    @NumberProperty({
+    @SliderProperty({
         name: "Auto Shitter Deaths",
         description: "Amount of deaths required for auto shitter",
         category: "Shitter List",
@@ -60,7 +60,7 @@ class Config {
     })
     aatroxBoost = false;
 
-    @NumberProperty({
+    @SliderProperty({
         name: "Slayer Tier",
         description: "Tier of slayer boss",
         category: "Counters",
@@ -76,6 +76,20 @@ class Config {
         category: "Misc"
     })
     hideID = false;
+
+    @SwitchProperty({
+        name: "Party Hider",
+        description: "Hides the usernames of players on the list",
+        category: "Misc"
+    })
+    partyHider = false;
+
+    @TextProperty({
+        name: "Party Hider List",
+        description: "Enter player names you want to hide, seperate with commas",
+        category: "Misc"
+    })
+    team = "";
 
     constructor() {
         this.initialize(this);
