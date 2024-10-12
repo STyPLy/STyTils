@@ -15,9 +15,10 @@ register("command", (command, ign, ...reason) => {
     switch (command) {
         case "add":
             if (!ign) return;
+            if(!reason) reason = "Manually added to shitter list.".split(" ");
             if (data[ign.toLowerCase()]) {ChatLib.chat("&b[SL] " + ign + " is already on the shitter list."); return}
 
-            data[ign.toLowerCase()] = reason.length ? reason.join(" ") : "Manually added to shitter list.";
+            data[ign.toLowerCase()] = reason.join(" ")
             FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true)
             ChatLib.chat("&b[SL] Added " + ign + " to the shitter list.")
             break;

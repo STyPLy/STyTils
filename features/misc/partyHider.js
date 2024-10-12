@@ -1,19 +1,21 @@
 // Scoreboard, Chat, Tablist
 import config from "../../config"
 
-// Get updated team
-
-// Party Chat & Guild Chat
-register("chat",(rank, username,message,event)=>{
+// Chat
+register("chat",(str,event)=>{
     if (!config.partyHider) return;
-    let team = config.Team
+    let team = config.team
     team = team.replace(/\s+/g, '').split(",")
-    team.forEach((key,index)=>{
-        if (key == username) {
-            cancel(event);
-            ChatLib.chat("&9Party &8> &bSTyTils " + index +  "&f: " + message)
-            return
+    team.forEach((key,index) => {
+        if(str.includes(key) || str.toLowerCase().includes(key.toLowerCase())) {
+            cancel(event)
+            let newMsg = str.replace(key,"STyTils" + index);
+            ChatLib.chat(newMsg)
         }
     })
+}).setCriteria(/(.*)/)
 
-}).setCriteria(/^(Party|Guild) >(?: \[(VIP|VIP\+|MVP|MVP\+)\]\s*)? \w+(?: \[\w+\])?: (\S+)/)
+
+register("step",()=>{
+    if (!config.partyHider) return;
+}).setDelay(5)
