@@ -43,7 +43,7 @@ register("chat", (name,event) => {
 
 register("chat",(name,event)=>{
     if (!inDungeon() || !config.puzzleFail) return;
-    // if (name == Player.getName()) return;
+    if (name == Player.getName()) return;
 
     let data = FileLib.read("STyTils","data.json");
     try {
@@ -62,7 +62,7 @@ register("chat",(name,event)=>{
 
 register("chat",(name,event)=>{
     if (!inDungeon() || !config.puzzleFail) return;
-    // if (name == Player.getName()) return;
+    if (name == Player.getName()) return;
 
     let data = FileLib.read("STyTils","data.json");
     try {
