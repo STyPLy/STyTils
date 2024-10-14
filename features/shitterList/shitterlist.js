@@ -1,4 +1,4 @@
-import "./deathTracker"
+import "./autoShitter"
 import "./partyJoin"
 
 register("command", (command, ign, ...reason) => {
