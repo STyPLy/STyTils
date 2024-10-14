@@ -14,6 +14,13 @@ class Config {
     })
     autoShitter = true;
 
+    @SwitchProperty({
+        name: "Failed Puzzle",
+        description: "Adds mfs to shitter list if they fail a puzzle",
+        category: "Shitter List"
+    })
+    puzzleFail = true
+
     @SliderProperty({
         name: "Auto Shitter Deaths",
         description: "Amount of deaths required for auto shitter",
@@ -93,6 +100,9 @@ class Config {
 
     constructor() {
         this.initialize(this);
+        this.addDependency("Auto Shitter Deaths","Auto Shitter")
+        this.addDependency("Failed Puzzle", "Auto Shitter")
+        this.addDependency("Aatrox XP buff", "Slayer Counter")
     }
 
 }

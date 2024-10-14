@@ -14,8 +14,3 @@ register("chat",(str,event)=>{
         }
     })
 }).setCriteria(/(.*)/)
-
-
-register("step",()=>{
-    if (!config.partyHider) return;
-}).setDelay(5)

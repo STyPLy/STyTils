@@ -39,3 +39,40 @@ register("chat", (name,event) => {
     }
     else Deaths[name] += 1
 }).setCriteria(/^ ☠ (\S+) .+/)
+
+
+register("chat",(name,event)=>{
+    if (!inDungeon() || !config.puzzleFail) return;
+    // if (name == Player.getName()) return;
+
+    let data = FileLib.read("STyTils","data.json");
+    try {
+        data = data ? JSON.parse(data) : {};
+    } catch (e) {
+        console.log(e);
+    }
+    
+    data[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
+    FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
+    ChatLib.chat("&b[SL] Added " + name + " to the shitter list.");
+    return;
+    
+
+}).setCriteria(/^PUZZLE FAIL! (\S+) .+$/)
+
+register("chat",(name,event)=>{
+    if (!inDungeon() || !config.puzzleFail) return;
+    // if (name == Player.getName()) return;
+
+    let data = FileLib.read("STyTils","data.json");
+    try {
+        data = data ? JSON.parse(data) : {};
+    } catch (e) {
+        console.log(e);
+    }
+    
+    data[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
+    FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
+    ChatLib.chat("&b[SL] Added " + name + " to the shitter list.");
+    return;
+}).setCriteria(/^\[STATUE\] Oruo the Omniscient: (\S+) chose the wrong answer!.*/)
