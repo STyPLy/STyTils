@@ -53,6 +53,13 @@ class Config {
     })
     queueCommands = true;
 
+    @TextProperty({
+        name: "Queue Command List",
+        description: "Commands to queue. Seperate with commas. Reload chat triggers after changing.",
+        category: "Queue Commands"
+    })
+    commandList = ""
+
     @SwitchProperty({
         name: "Slayer Counter",
         description: "Counts how many slayers you have left",
@@ -103,6 +110,7 @@ class Config {
         this.addDependency("Auto Shitter Deaths","Auto Shitter")
         this.addDependency("Failed Puzzle", "Auto Shitter")
         this.addDependency("Aatrox XP buff", "Slayer Counter")
+        this.addDependency("Queue Command List", "Queue Commands")
     }
 
 }
