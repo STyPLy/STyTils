@@ -100,7 +100,7 @@ class Config {
 
     @SwitchProperty({
         name: "Fire Freeze Alert (M3)",
-        description: "Tells you when to fire freeze for M3. Disable any boss message hiders",
+        description: "Tells you when to fire freeze for M3. ",
         category: "Dungeons"
     })
     FireFreeze = true

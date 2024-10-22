@@ -1,7 +1,14 @@
 import config from '../../config'
+const S02PacketChat = Java.type("net.minecraft.network.play.server.S02PacketChat")
 
-register("chat",()=>{
+register("packetReceived", (packet, event)=>{
+    if (packet.func_148916_d()) return
+
+    const chatComponent = packet.func_148915_c()
+    const formatted = chatComponent.func_150254_d().removeFormatting()
+    if (formatted !== "[BOSS] The Professor: Even if you took my barrier down, I can still fight.") return;
     if (!config.FireFreeze) return;
+    
     setTimeout(()=> {
 
         ChatLib.chat("§4Fire Freeze!")
@@ -13,4 +20,7 @@ register("chat",()=>{
             rc.invoke(Client.getMinecraft())
         }
     },2500)
-}).setCriteria("&r&c[BOSS] The Professor&r&f: Even if you took my barrier down, I can still fight.&r")
+
+
+
+}).setFilteredClass(S02PacketChat)
