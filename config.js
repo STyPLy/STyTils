@@ -2,8 +2,8 @@ import { Color,@ColorProperty,@SwitchProperty,@SliderProperty,@Vigilant,@TextPro
 
 @Vigilant('STyTils', '§bSTyTils', {
     getCategoryComparator: () => (a, b) => {
-        const categories = ['Shitter List','Queue Commands', "Counters", "Misc"];
-        return 1
+        const categories = ['Shitter List','Queue Commands', "Counters", "Dungeons" ,"Misc"];
+        return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
 })
 class Config {
@@ -45,6 +45,13 @@ class Config {
         placeholder: ""
     })
     shitterMessage = "$ign is TRASH!!"
+
+    @SwitchProperty({
+        name: "Scan Parties",
+        description: "W.I.P Module: Scans parties you join to check for shitters.",
+        category: "Shitter List"
+    })
+    partyScanner = false
 
     @SwitchProperty({
         name:"Queue Commands",
@@ -92,6 +99,20 @@ class Config {
     hideID = false;
 
     @SwitchProperty({
+        name: "Fire Freeze Alert (M3)",
+        description: "Tells you when to fire freeze for M3. Disable any boss message hiders",
+        category: "Dungeons"
+    })
+    FireFreeze = true
+
+    @SwitchProperty({
+        name: "Auto Fire Freeze",
+        description: "Use at your own risk.",
+        category: "Dungeons"
+    })
+    autoFreeze = false
+
+    @SwitchProperty({
         name: "Party Hider",
         description: "Hides the usernames of players on the list",
         category: "Misc"
@@ -111,6 +132,7 @@ class Config {
         this.addDependency("Failed Puzzle", "Auto Shitter")
         this.addDependency("Aatrox XP buff", "Slayer Counter")
         this.addDependency("Queue Command List", "Queue Commands")
+        this.addDependency("Auto Fire Freeze", "Fire Freeze Alert (M3)")
     }
 
 }
