@@ -91,12 +91,7 @@ class Config {
     })
     tier = 4;
 
-    @SwitchProperty({
-        name: "Hide Profile ID",
-        description: "Hides profile ID on world load.",
-        category: "Misc"
-    })
-    hideID = false;
+    
 
     @SwitchProperty({
         name: "Fire Freeze Alert (M3)",
@@ -111,6 +106,20 @@ class Config {
         category: "Dungeons"
     })
     autoFreeze = false
+
+    @SwitchProperty({
+        name: "Hide Profile ID",
+        description: "Hides profile ID on world load.",
+        category: "Misc"
+    })
+    hideID = false;
+
+    @SwitchProperty({
+        name: "Hide Lobby ID's",
+        description: "Hides scoreboard and chat lobby ID's",
+        category: "Misc"
+    })
+    lobbyHider = false
 
     @SwitchProperty({
         name: "Party Hider",

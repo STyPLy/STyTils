@@ -7,6 +7,7 @@ import './features/shitterList/shitterlist'
 
 import './features/misc/hideProfileID'
 import './features/misc/partyHider'
+import './features/misc/hideServer'
 
 import './features/dungeons/fireFreeze'
 
