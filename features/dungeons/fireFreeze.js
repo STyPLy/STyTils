@@ -8,10 +8,11 @@ register("packetReceived", (packet, event)=>{
     const formatted = chatComponent.func_150254_d().removeFormatting()
     if (formatted !== "[BOSS] The Professor: Even if you took my barrier down, I can still fight.") return;
     if (!config.FireFreeze) return;
-    
+
     setTimeout(()=> {
 
         ChatLib.chat("§4Fire Freeze!")
+        Client.showTitle(" ", "§4Fire Freeze!", 0, 30, 0);
         Client.showTitle(" ", "§4Fire Freeze!", 0, 30, 0);
 
         if (Player.getHeldItem().getName().includes("Fire Freeze") && config.autoFreeze) {
