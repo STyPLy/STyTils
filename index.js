@@ -10,6 +10,7 @@ import './features/misc/partyHider'
 import './features/misc/hideServer'
 
 import './features/dungeons/fireFreeze'
+import './features/dungeons/ghostPick'
 
 import config from "./config"
 // Main Command
