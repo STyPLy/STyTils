@@ -7,6 +7,10 @@ const map = {
 }
 
 const bar = new Block(new BlockType("minecraft:iron_bars"), new BlockPos(123,123,123),null).type.getUnlocalizedName();
+const pane = new Block(new BlockType("minecraft:glass_pane"),new BlockPos(-123,-123,-123),null).type.getUnlocalizedName();
+const stainedPane = new Block(new BlockType("minecraft:stained_glass_pane"),new BlockPos(123,123,123),null).type.getUnlocalizedName();
+
+const allowed = [bar,pane,stainedPane]
 
 // Checks if you are able to phase
 function canPhase(num) {
@@ -27,7 +31,7 @@ register("tick",()=>{
     let phase = false
     let newPos = pos.map((value,index) => value + map[Player.facing()][index])
     // checks if raytraced block is a iron bar
-    if (block != bar) return
+    if (!allowed.includes(block)) return
     
     phase = pos.some(canPhase)
 
