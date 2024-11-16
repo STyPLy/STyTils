@@ -108,6 +108,13 @@ class Config {
     autoFreeze = false
 
     @SwitchProperty({
+        name: "Bar Phase",
+        description: "Phase through bars",
+        category: "Dungeons"
+    })
+    barPhase = false
+
+    @SwitchProperty({
         name: "Hide Profile ID",
         description: "Hides profile ID on world load.",
         category: "Misc"
