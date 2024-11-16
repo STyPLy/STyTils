@@ -30,7 +30,6 @@ register("tick",()=>{
     phase = pos.some(canPhase)
 
     if (newPos && phase) {
-
         Player.getPlayer().func_70107_b(newPos[0],newPos[1],newPos[2])
     }
 
