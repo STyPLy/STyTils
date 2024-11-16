@@ -1,8 +1,8 @@
 import config from '../../config'
 const map = {
-    "North": [0,0,0.706],
+    "North": [0,0,-0.706],
     "East": [0.706,0,0],
-    "South": [0,0,-0.706],
+    "South": [0,0,0.706],
     "West": [-0.706,0,0]
 }
 
