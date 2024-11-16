@@ -11,6 +11,7 @@ import './features/misc/hideServer'
 
 import './features/dungeons/fireFreeze'
 import './features/dungeons/ghostPick'
+import './features/dungeons/barPhase'
 
 import config from "./config"
 // Main Command
