@@ -6,7 +6,7 @@ const map = {
     "West": [-0.706,0,0]
 }
 
-const bar = new Block(new BlockType("minecraft:iron_bars"), new BlockPos(123,123,123));
+const bar = new Block(new BlockType("minecraft:iron_bars"), new BlockPos(123,123,123),null).type;
 
 function canPhase(num) {
     num = Math.abs(num - Math.floor(num));
