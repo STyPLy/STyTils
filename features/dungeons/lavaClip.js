@@ -23,7 +23,7 @@ register("tick",()=>{
 })
 
 register("packetReceived", (packet,event) => {
-    if (!toggled && noVelo) return;
+    if (!toggled || noVelo) return;
     if (packet.func_149410_e() != 28000 || packet.func_149412_c() != Player.getPlayer().func_145782_y()) return;
     cancel(event)
     noVelo = true
