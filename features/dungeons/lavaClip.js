@@ -12,7 +12,7 @@ new KeyBind("Lava Clip", Keyboard.KEY_M, "STyTils").registerKeyPress(()=>{
 register("command",(dist)=>{
     distance = dist
     ChatLib.chat("Set Lava Clip Distance")
-})
+}).setName("lavaclip")
 
 register("tick",()=>{
     if (toggled && Player.getPlayer().func_180799_ab()) {
