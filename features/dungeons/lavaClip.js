@@ -27,4 +27,4 @@ register("packetReceived", (packet,event) => {
     if (packet.func_149410_e() != 28000 || packet.func_149412_c() != Player.getPlayer().func_145782_y()) return;
     cancel(event)
     noVelo = true
-})
+}).setFilteredClass(S12PacketEntityVelocity)
