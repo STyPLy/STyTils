@@ -1,3 +1,4 @@
+Client.settings.getSettings().func_74300_a(); // loads keybinds TOP OF FILE
 // Import Features
 
 import "./features/queueCommands"
@@ -12,6 +13,7 @@ import './features/misc/hideServer'
 import './features/dungeons/fireFreeze'
 import './features/dungeons/ghostPick'
 import './features/dungeons/barPhase'
+import './features/dungeons/lavaClip'
 
 import config from "./config"
 // Main Command
@@ -19,3 +21,8 @@ import config from "./config"
 register("command",()=>{
     config.openGUI()
 }).setName("stytils").setAliases("sty")
+
+
+register('gameUnload', () => {
+    Client.settings.getSettings().func_74303_b(); // saves keybinds
+})
