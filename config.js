@@ -115,6 +115,13 @@ class Config {
     barPhase = false
 
     @SwitchProperty({
+        name: "Boss Clip",
+        description: "Instant enter p2 on f7",
+        category: "Dungeons"
+    })
+    bossClip = false;
+
+    @SwitchProperty({
         name: "Hide Profile ID",
         description: "Hides profile ID on world load.",
         category: "Misc"

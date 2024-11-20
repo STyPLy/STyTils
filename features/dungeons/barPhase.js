@@ -24,7 +24,7 @@ register("tick",()=>{
     
     let pos = [Player.getX(),Player.getY(),Player.getZ()]
     // Raytraces block in front of you
-    let blockpos = Player.getPlayer().func_174822_a(1,1)?.func_178782_a()
+    let blockpos = Player.getPlayer().func_174822_a(0.5,1)?.func_178782_a()
     if (!blockpos) return
     
     let block = Player.getPlayer().field_70170_p.func_180495_p(blockpos).func_177230_c().func_149739_a()

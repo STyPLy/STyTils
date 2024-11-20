@@ -14,6 +14,7 @@ import './features/dungeons/fireFreeze'
 import './features/dungeons/ghostPick'
 import './features/dungeons/barPhase'
 import './features/dungeons/lavaClip'
+import './features/dungeons/bossClip'
 
 import config from "./config"
 // Main Command
