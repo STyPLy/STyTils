@@ -10,6 +10,7 @@ new KeyBind("Lava Clip", Keyboard.KEY_M, "STyTils").registerKeyPress(()=>{
 })
 
 register("command",(dist)=>{
+    if (!dist) return;
     distance = dist
     ChatLib.chat("Set Lava Clip Distance")
 }).setName("lavaclip")

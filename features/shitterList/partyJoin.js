@@ -2,6 +2,7 @@ import config from "../../config"
 
 function checkParty(data) {
     if (!config.partyScanner) return;
+    ChatLib.chat("&b[SL] Scanning Party for shitters")
     let inDH = false
     let index = -1
     let tablist = TabList?.getNames()
@@ -96,7 +97,6 @@ register("chat",(ign)=>{
         }
     }
     setTimeout(()=>{
-        ChatLib.chat("&b[SL] Scanning Party for shitters")
         checkParty(data)
     },10000)
 }).setCriteria(/You have joined (?:\[(?:VIP|VIP\+|MVP|MVP\+|MVP\+\+)\]\s)?([\w]+)'s party!/)
