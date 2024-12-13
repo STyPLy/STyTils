@@ -122,6 +122,13 @@ class Config {
     bossClip = false;
 
     @SwitchProperty({
+        name: "Pearl Refill",
+        description: "Automatically refills pearls when you run out",
+        category: "Dungeons"
+    })
+    refillPearl = false
+
+    @SwitchProperty({
         name: "Hide Profile ID",
         description: "Hides profile ID on world load.",
         category: "Misc"
@@ -148,6 +155,13 @@ class Config {
         category: "Misc"
     })
     team = "";
+
+    @SwitchProperty({
+        name: "Ability Alert",
+        description: "Alert when ability ready",
+        category: "Misc"
+    })
+    abilityAlert = false
 
     constructor() {
         this.initialize(this);

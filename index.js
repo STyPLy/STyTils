@@ -3,6 +3,7 @@ Client.settings.getSettings().func_74300_a(); // loads keybinds TOP OF FILE
 
 import "./features/queueCommands"
 
+import './features/Mining/abilityAlert'
 import "./features/Counters/slayerCounter"
 import './features/shitterList/shitterlist'
 
@@ -15,6 +16,7 @@ import './features/dungeons/ghostPick'
 import './features/dungeons/barPhase'
 import './features/dungeons/lavaClip'
 import './features/dungeons/bossClip'
+import './features/dungeons/refillPearl'
 
 import config from "./config"
 // Main Command
