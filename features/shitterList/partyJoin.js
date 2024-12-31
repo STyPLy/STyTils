@@ -41,15 +41,15 @@ register("chat", (ign) => {
         
     }
     if (data[ign.toLowerCase()]) {
-        
-        setTimeout(()=> {
-            let text = config.shitterMessage
-            text = text.replace("$ign", ign)
-            text = text.replace("$reason",data[ign.toLowerCase()])
-            ChatLib.command("pc " + text);
-            
-        },500);
-        
+        if (config.joinMessage) {
+            setTimeout(()=> {
+                let text = config.shitterMessage
+                text = text.replaceAll("$ign", ign)
+                text = text.replaceAll("$reason",data[ign.toLowerCase()])
+                ChatLib.command("pc " + text);
+                
+            },500);
+        }
         if (config.autoKick) {
             setTimeout(()=>{
                 ChatLib.command("p kick " + ign);

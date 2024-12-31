@@ -38,8 +38,15 @@ class Config {
     })
     autoKick = false;
 
+    @SwitchProperty({
+        name: "Join Message",
+        description: "Sends a message when a shitter joins",
+        category: "Shitter List"
+    })
+    joinMessage = true
+
     @TextProperty({
-        name: "Shitter Join Message",
+        name: "Shitter Message",
         description: "Message when a shitter joins the party",
         category: "Shitter List",
         placeholder: ""
@@ -174,6 +181,7 @@ class Config {
         this.initialize(this);
         this.addDependency("Auto Shitter Deaths","Auto Shitter")
         this.addDependency("Failed Puzzle", "Auto Shitter")
+        this.addDependency("Shitter Message", "Join Message")
         this.addDependency("Aatrox XP buff", "Slayer Counter")
         this.addDependency("Queue Command List", "Queue Commands")
         this.addDependency("Auto Fire Freeze", "Fire Freeze Alert (M3)")
