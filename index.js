@@ -17,6 +17,7 @@ import './features/dungeons/barPhase'
 import './features/dungeons/lavaClip'
 import './features/dungeons/bossClip'
 import './features/dungeons/refillPearl'
+import './features/dungeons/noInteract'
 
 import config from "./config"
 // Main Command

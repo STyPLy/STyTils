@@ -129,6 +129,13 @@ class Config {
     refillPearl = false
 
     @SwitchProperty({
+        name: "No Pearl Interact",
+        description: "Disables pearl interaction",
+        category: "Dungeons"
+    })
+    noInteract = false;
+
+    @SwitchProperty({
         name: "Hide Profile ID",
         description: "Hides profile ID on world load.",
         category: "Misc"
