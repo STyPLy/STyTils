@@ -8,6 +8,7 @@ function inDungeon() {
 register("step",()=>{
     if(!config.refillPearl) return;
     if (!inDungeon()) return;
+    if (Player?.getContainer()?.size !== 45) return;
 
     let inventory = Player.getInventory().getItems()
     let containsPearls = false
