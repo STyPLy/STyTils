@@ -6,7 +6,7 @@ let queued = false
 
 function queueCommand(cmd, ...args) {
     if (queued) return;
-    if ((Date.now() - queueTime) < 0) return;
+    if ((4000 - Date.now() - queueTime) < 0) return;
     if (!queueCommands) {ChatLib.command(cmd + " " + args.join().replace(/\,+/g, " ")); return;}
         
     queued = true
