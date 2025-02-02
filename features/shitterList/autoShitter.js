@@ -1,11 +1,7 @@
 import config from "../../config"
+import { inDungeon } from "../../utils"
 let Deaths = {}
 
-function inDungeon() {
-    try {
-        return TabList?.getNames()?.some(a => a.removeFormatting() == 'Dungeon: Catacombs')
-    } catch (e) { }
-}
 
 register("worldLoad",()=> {
     if (!inDungeon()) {

@@ -1,9 +1,5 @@
 import config from "../../config"
-function inDungeon() {
-    try {
-        return TabList?.getNames()?.some(a => a.removeFormatting() == 'Dungeon: Catacombs')
-    } catch (e) { }
-}
+import { inDungeon } from "../../utils";
 
 register("step",()=>{
     if(!config.refillPearl) return;
