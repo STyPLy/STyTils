@@ -1,4 +1,6 @@
 import config from '../../config'
+import { canPhase } from '../../utils';
+
 const map = {
     "North": [0,0,-0.706],
     "East": [0.706,0,0],
@@ -11,12 +13,6 @@ const pane = new Block(new BlockType("minecraft:glass_pane"),new BlockPos(-123,-
 const stainedPane = new Block(new BlockType("minecraft:stained_glass_pane"),new BlockPos(123,123,123),null).type.getUnlocalizedName();
 
 const allowed = [bar,pane,stainedPane]
-
-// Checks if you are able to phase
-function canPhase(num) {
-    num = Math.abs(num - Math.floor(num));
-    return Math.abs(num - 0.137) <= 5e-4 || Math.abs(num - 0.863) <= 5e-4
-}
 
 register("tick",()=>{
     if (!config.barPhase) return;
