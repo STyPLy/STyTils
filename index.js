@@ -10,6 +10,7 @@ import './features/shitterList/shitterlist'
 import './features/misc/hideProfileID'
 import './features/misc/partyHider'
 import './features/misc/hideServer'
+import './features/misc/autoGift'
 
 import './features/dungeons/fireFreeze'
 import './features/dungeons/ghostPick'
@@ -18,6 +19,7 @@ import './features/dungeons/lavaClip'
 import './features/dungeons/bossClip'
 import './features/dungeons/refillPearl'
 import './features/dungeons/noInteract'
+
 
 import config from "./config"
 // Main Command

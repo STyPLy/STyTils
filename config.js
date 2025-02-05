@@ -177,6 +177,14 @@ class Config {
     })
     abilityAlert = false
 
+    @SwitchProperty({
+        name: "Auto Gift",
+        description: "Automatically open gifts and cakes",
+        category: "Misc"
+    })
+    autoGift = false;
+
+
     constructor() {
         this.initialize(this);
         this.addDependency("Auto Shitter Deaths","Auto Shitter")
