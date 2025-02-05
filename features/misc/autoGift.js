@@ -1,9 +1,11 @@
-let stand = Java.type("net.minecraft.entity.item.EntityArmorStand")
-let C02PacketUseEntity = Java.type("net.minecraft.network.play.client.C02PacketUseEntity")
-let C02PacketUseEntityAction = Java.type("net.minecraft.network.play.client.C02PacketUseEntity.Action")
+import config from "../../config"
+
+const ArmorStand = Java.type("net.minecraft.entity.item.EntityArmorStand")
+const C02PacketUseEntity = Java.type("net.minecraft.network.play.client.C02PacketUseEntity")
 
 register('tick',()=> {
-    let entities = World.getAllEntitiesOfType(stand)
+    if (!config.autoGift) return;
+    let entities = World.getAllEntitiesOfType(ArmorStand)
     for (let entity of entities) {
         if (entity?.name == "§e§lCLICK TO OPEN" || entity?.name == "§e§lCLICK TO EAT") {
             let packet = new C02PacketUseEntity(entity.getEntity(),C02PacketUseEntity.Action.INTERACT)
