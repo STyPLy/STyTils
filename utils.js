@@ -37,3 +37,20 @@ export function saveShitterList(data) {
     }
     return true
 }
+
+export function getKeybind(keyName) {
+    try {
+        let File = Java.type("java.io.File")
+        let mc = new File(Client.getMinecraft().field_71412_D.getPath())
+        let data = FileLib.read(`${mc}\\options.txt`).split("\n");
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].includes(keyName)) {
+                return data[i].split(":")[1]
+            }
+        }
+        return 0;
+    }
+    catch (e) {
+        console.log(e)
+    }
+}

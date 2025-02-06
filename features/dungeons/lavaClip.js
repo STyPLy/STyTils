@@ -1,10 +1,11 @@
+import { getKeybind } from "../../utils";
 const S12PacketEntityVelocity = Java.type("net.minecraft.network.play.server.S12PacketEntityVelocity")
 let distance = 28;
 let toggled = false;
 let noVelo = false
 
 
-new KeyBind("Lava Clip", Keyboard.KEY_M, "STyTils").registerKeyPress(()=>{
+new KeyBind("Lava Clip", getKeybind("Lava Clip"), "STyTils").registerKeyPress(()=>{
     toggled = !toggled
     ChatLib.chat("Lava Clip: " + toggled)
 })

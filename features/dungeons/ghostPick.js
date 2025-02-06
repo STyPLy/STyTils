@@ -1,3 +1,5 @@
+import { getKeybind } from "../../utils"
+
 const air = new Block(new BlockType("minecraft:air"), new BlockPos(999, 999, 999), null).type
 const chest = new Block(new BlockType("minecraft:chest"), new BlockPos(999,999,999),null).type
 const lever = new Block(new BlockType("minecraft:lever"), new BlockPos(999,999,999),null).type
@@ -6,7 +8,7 @@ let db = false
 
 let disallowed = [air.getUnlocalizedName(),chest.getUnlocalizedName(),lever.getUnlocalizedName(),tchest.getUnlocalizedName()]
 
-new KeyBind("Ghost Block",Keyboard.KEY_NONE,"STyTils").registerKeyDown(()=>{
+new KeyBind("Ghost Block",getKeybind("Ghost Block"),"STyTils").registerKeyDown(()=>{
     
     if (!db) db = true
     else return;

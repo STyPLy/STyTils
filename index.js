@@ -1,4 +1,3 @@
-Client.settings.getSettings().func_74300_a(); // loads keybinds TOP OF FILE
 // Import Features
 
 import "./features/queueCommands"
@@ -27,8 +26,3 @@ import config from "./config"
 register("command",()=>{
     config.openGUI()
 }).setName("stytils").setAliases("sty")
-
-
-register('gameUnload', () => {
-    Client.settings.getSettings().func_74303_b(); // saves keybinds
-})
