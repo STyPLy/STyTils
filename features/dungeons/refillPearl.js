@@ -10,8 +10,9 @@ register("step",()=>{
     let containsPearls = false
     for (let i = 0; i < inventory.length; i++) {
         let item = inventory[i];
-        if (item?.getName()?.includes("Ender Pearl")) {
+        if (item?.getID() === 368) {
             containsPearls = true;
+            break;
         }
     }
 
