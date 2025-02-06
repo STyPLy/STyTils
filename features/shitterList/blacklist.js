@@ -2,7 +2,7 @@ import { getShitterList, saveShitterList } from "../../utils";
 
 
 register("command", (command,ign) => {
-    if (!command) return ChatLib.chat("&b[STyTils] USAGE: /whitelist <add/remove/list/clear>");
+    if (!command) return ChatLib.chat("&b[STyTils] USAGE: /blacklist <add/remove/list/clear>");
 
     let data = getShitterList();
 
