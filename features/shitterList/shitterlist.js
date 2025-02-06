@@ -1,14 +1,13 @@
 import { getShitterList, saveShitterList } from "../../utils";
 import "./autoShitter"
 import "./partyJoin"
-import './whitelist'
+import './blacklist'
 
 register("command", (command, ign, ...reason) => {
     if (!command) {ChatLib.chat("&b[STyTils] USAGE: /sl <add/remove/list/clear/why> <username>"); return};
     
     let data = getShitterList();
     
-    // if (!data) ChatLib.chat("&cCould not read data.json ?");
     switch (command) {
         case "add":
             if (!ign) return;
@@ -16,20 +15,20 @@ register("command", (command, ign, ...reason) => {
             if (data.shitters[ign.toLowerCase()]) {ChatLib.chat("&b[STyTils] " + ign + " is already on the shitter list."); return}
 
             data.shitters[ign.toLowerCase()] = reason.join(" ")
-
+            saveShitterList(data)
             ChatLib.chat("&b[STyTils] Added " + ign + " to the shitter list.")
             break;
         case "remove":
             if (!ign) return;
             if (!data.shitters[ign.toLowerCase()]) {ChatLib.chat("&b[STyTils] " + ign + " is not on the shitter list."); return;}
             delete data.shitters[ign.toLowerCase()]
-            FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true)
+            saveShitterList(data)
             ChatLib.chat("&b[STyTils] Removed " + ign + " from the shitter list.")
             break;
         case "list":
             ChatLib.chat("&bShitter List: ")
             let n = 1
-            for (let x in data) {
+            for (let x in data.shitters) {
                 ChatLib.chat("&6" + n + ". &f&l" + x + "&r: &b" + data[x])
                 n += 1
             }
@@ -38,7 +37,7 @@ register("command", (command, ign, ...reason) => {
             Object.keys(data.shitters).forEach(key => {
                 delete data.shitters[key]
             })
-            FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true)
+            saveShitterList(data)
             ChatLib.chat("&b[STyTils] Cleared the shitter list.")
             break;
         case "why":

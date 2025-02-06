@@ -20,7 +20,7 @@ export function canPhase(num) {
 export function getShitterList() {
     let data = FileLib.read("STyTils","data.json")
     try {
-        data = data ? JSON.parse(data) : {shitters: {}, whitelist: {}};;
+        data = data ? JSON.parse(data) : {shitters: {}, whitelist: []};
     } catch (e) {
         console.log(e);
     }
