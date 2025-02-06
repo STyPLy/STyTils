@@ -8,7 +8,7 @@ let db = false
 
 let disallowed = [air.getUnlocalizedName(),chest.getUnlocalizedName(),lever.getUnlocalizedName(),tchest.getUnlocalizedName()]
 
-new KeyBind("Ghost Block",getKeybind("Ghost Block"),"STyTils").registerKeyDown(()=>{
+new KeyBind("Ghost Pick",getKeybind("Ghost Pick"),"STyTils").registerKeyDown(()=>{
     
     if (!db) db = true
     else return;
