@@ -1,4 +1,5 @@
 import config from "../../config"
+import { getShitterList } from "../../utils";
 
 function checkParty(data) {
     if (!config.partyScanner) return;
@@ -16,7 +17,7 @@ function checkParty(data) {
     
     for (let i = index+1; i < index+size+1; i++) {
         let plr = tablist[i]?.split(":")[0].replace(/\s+/g, '').toLowerCase()
-        if (data[plr]) {
+        if (data.shitters[plr]) {
             ChatLib.chat("&b[STyTils] " + plr + " is a shitter!")
         }
     }
@@ -26,26 +27,19 @@ function checkParty(data) {
 
 // Checks Shitter List on party finder join
 register("chat", (ign) => {
-    let data = FileLib.read("STyTils","data.json");
-    try {
-        data = data ? JSON.parse(data) : {};
-    } catch(e) {
-        if (e) {
-            console.log(e);
-        }
-    }
+    let data = getShitterList()
     if (ign == Player.getName()) {
         setTimeout(()=>{
             checkParty(data)
         },10000)
         
     }
-    if (data[ign.toLowerCase()]) {
+    if (data.shitters[ign.toLowerCase()]) {
         if (config.joinMessage) {
             setTimeout(()=> {
                 let text = config.shitterMessage
                 text = text.replaceAll("$ign", ign)
-                text = text.replaceAll("$reason",data[ign.toLowerCase()])
+                text = text.replaceAll("$reason",data.shitters[ign.toLowerCase()])
                 ChatLib.command("pc " + text);
                 
             },500);
@@ -61,15 +55,9 @@ register("chat", (ign) => {
 
 // Checks for regular party join
 register("chat", (rank,ign) => {
-    let data = FileLib.read("STyTils","data.json");
-    try {
-        data = data ? JSON.parse(data) : {};
-    } catch(e) {
-        if (e) {
-            console.log(e);
-        }
-    }
-    if (data[ign.toLowerCase()]) {
+    let data = getShitterList();
+
+    if (data.shitters[ign.toLowerCase()]) {
         if (config.joinMessage) {
             setTimeout(()=> {
                 let text = config.shitterMessage
@@ -89,14 +77,7 @@ register("chat", (rank,ign) => {
 }).setCriteria(/(?:\[(VIP|VIP\+|MVP|MVP\+|MVP\+\+)\]\s*)?(\w+) joined the party\./)
 
 register("chat",()=>{
-    let data = FileLib.read("STyTils","data.json");
-    try {
-        data = data ? JSON.parse(data) : {};
-    } catch(e) {
-        if (e) {
-            console.log(e);
-        }
-    }
+    let data = getShitterList();
     setTimeout(()=>{
         checkParty(data)
     },10000)

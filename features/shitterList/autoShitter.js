@@ -1,5 +1,5 @@
 import config from "../../config"
-import { inDungeon } from "../../utils"
+import { inDungeon, getShitterList, saveShitterList } from "../../utils"
 let Deaths = {}
 
 
@@ -21,15 +21,10 @@ register("chat", (name,event) => {
 
     if (Deaths[name] == config.deathToShitters) {
         
-        let data = FileLib.read("STyTils","data.json");
-        try {
-            data = data ? JSON.parse(data) : {};
-        } catch (e) {
-            console.log(e);
-        }
+        let data = getShitterList();
         
-        data[name.toLowerCase()] = "Died too many times in dungeons - Auto Shitter";
-        FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
+        data.shitters[name.toLowerCase()] = "Died too many times in dungeons - Auto Shitter";
+        saveShitterList(data)
         ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
         return;
     }
@@ -41,15 +36,10 @@ register("chat",(name,event)=>{
     if (!inDungeon() || !config.puzzleFail) return;
     if (name == Player.getName()) return;
 
-    let data = FileLib.read("STyTils","data.json");
-    try {
-        data = data ? JSON.parse(data) : {};
-    } catch (e) {
-        console.log(e);
-    }
+    let data = getShitterList();
     
-    data[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
-    FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
+    data.shitters[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
+    saveShitterList(data)
     ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
     return;
     
@@ -60,15 +50,10 @@ register("chat",(name,event)=>{
     if (!inDungeon() || !config.puzzleFail) return;
     if (name == Player.getName()) return;
 
-    let data = FileLib.read("STyTils","data.json");
-    try {
-        data = data ? JSON.parse(data) : {};
-    } catch (e) {
-        console.log(e);
-    }
+    let data = getShitterList();
     
-    data[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
-    FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
+    data.shitters[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
+    saveShitterList(data);
     ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
     return;
 }).setCriteria(/^\[STATUE\] Oruo the Omniscient: (\S+) chose the wrong answer!.*/)
