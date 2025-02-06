@@ -30,7 +30,7 @@ register("chat", (name,event) => {
         
         data[name.toLowerCase()] = "Died too many times in dungeons - Auto Shitter";
         FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
-        ChatLib.chat("&b[SL] Added " + name + " to the shitter list.");
+        ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
         return;
     }
     else Deaths[name] += 1
@@ -50,7 +50,7 @@ register("chat",(name,event)=>{
     
     data[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
     FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
-    ChatLib.chat("&b[SL] Added " + name + " to the shitter list.");
+    ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
     return;
     
 
@@ -69,6 +69,6 @@ register("chat",(name,event)=>{
     
     data[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
     FileLib.write("STyTils", "data.json", JSON.stringify(data,null,4),true);
-    ChatLib.chat("&b[SL] Added " + name + " to the shitter list.");
+    ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
     return;
 }).setCriteria(/^\[STATUE\] Oruo the Omniscient: (\S+) chose the wrong answer!.*/)

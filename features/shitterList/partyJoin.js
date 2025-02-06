@@ -2,7 +2,7 @@ import config from "../../config"
 
 function checkParty(data) {
     if (!config.partyScanner) return;
-    ChatLib.chat("&b[SL] Scanning Party for shitters")
+    ChatLib.chat("&b[STyTils] Scanning Party for shitters")
     let inDH = false
     let index = -1
     let tablist = TabList?.getNames()
@@ -12,12 +12,12 @@ function checkParty(data) {
         if (str.includes("Party: ")) index = i;
     })
     let size = parseInt(tablist[index].removeFormatting().substring(8,9))
-    if (!inDH || !tablist || index === -1 || !size) {ChatLib.chat("&b[SL] Party Scan Failed.");return};
+    if (!inDH || !tablist || index === -1 || !size) {ChatLib.chat("&b[STyTils] Party Scan Failed.");return};
     
     for (let i = index+1; i < index+size+1; i++) {
         let plr = tablist[i]?.split(":")[0].replace(/\s+/g, '').toLowerCase()
         if (data[plr]) {
-            ChatLib.chat("&b[SL] " + plr + " is a shitter!")
+            ChatLib.chat("&b[STyTils] " + plr + " is a shitter!")
         }
     }
 
@@ -88,7 +88,7 @@ register("chat", (rank,ign) => {
     }
 }).setCriteria(/(?:\[(VIP|VIP\+|MVP|MVP\+|MVP\+\+)\]\s*)?(\w+) joined the party\./)
 
-register("chat",(ign)=>{
+register("chat",()=>{
     let data = FileLib.read("STyTils","data.json");
     try {
         data = data ? JSON.parse(data) : {};

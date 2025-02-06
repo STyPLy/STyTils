@@ -179,7 +179,7 @@ class Config {
 
     @SwitchProperty({
         name: "Auto Gift",
-        description: "Automatically open gifts and cakes",
+        description: "Automatically open gifts",
         category: "Misc"
     })
     autoGift = false;
