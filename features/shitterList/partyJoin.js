@@ -62,7 +62,7 @@ register("chat", (rank,ign) => {
             setTimeout(()=> {
                 let text = config.shitterMessage
                 text = text.replace("$ign", ign)
-                text = text.replace("$reason",data[ign.toLowerCase()])
+                text = text.replace("$reason",data.shitters[ign.toLowerCase()])
                 ChatLib.command("pc " + text);
                 
             },500);

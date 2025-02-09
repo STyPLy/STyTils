@@ -29,7 +29,7 @@ register("command", (command, ign, ...reason) => {
             ChatLib.chat("&bShitter List: ")
             let n = 1
             for (let x in data.shitters) {
-                ChatLib.chat("&6" + n + ". &f&l" + x + "&r: &b" + data[x])
+                ChatLib.chat("&6" + n + ". &f&l" + x + "&r: &b" + data.shitters[x])
                 n += 1
             }
             break;
