@@ -22,7 +22,7 @@ register("chat", (name,event) => {
     if (Deaths[name] == config.deathToShitters) {
         
         let data = getShitterList();
-        
+        if (data.shitters[name.toLowerCase()]) return;
         if (data.whitelist.findIndex(i => i === name.toLowerCase()) !== -1) return;
 
         data.shitters[name.toLowerCase()] = "Died too many times in dungeons - Auto Shitter";
@@ -39,6 +39,7 @@ register("chat",(name,event)=>{
     if (name == Player.getName()) return;
 
     let data = getShitterList();
+    if (data.shitters[name.toLowerCase()]) return;
     if (data.whitelist.findIndex(i => i === name.toLowerCase()) !== -1) return;
     
     data.shitters[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
@@ -55,6 +56,8 @@ register("chat",(name,event)=>{
 
     let data = getShitterList();
     if (data.whitelist.findIndex(i => i === name.toLowerCase()) !== -1) return;
+    if (data.shitters[name.toLowerCase()]) return;
+
     data.shitters[name.toLowerCase()] = "Failed a puzzle - Auto Shitter";
     saveShitterList(data);
     ChatLib.chat("&b[STyTils] Added " + name + " to the shitter list.");
