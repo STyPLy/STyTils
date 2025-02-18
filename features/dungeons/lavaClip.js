@@ -19,14 +19,14 @@ register("command",(dist)=>{
 register("tick",()=>{
     if (toggled && Player.getPlayer().func_180799_ab()) {
         toggled = false;
-        noVelo = false;
         Player.getPlayer().func_70107_b(Player.getX(),Player.getY()-distance,Player.getZ())
+        let trigger = register("packetReceived", (packet,event) => {
+            if (packet?.func_149410_e() != 28000 || packet?.func_149412_c() != Player.getPlayer()?.func_145782_y()) return;
+            cancel(event)
+            trigger.unregister();
+        })
+        Client.scheduleTask(20,()=>{
+            trigger?.unregister();
+        })
     }
 })
-
-register("packetReceived", (packet,event) => {
-    if (!toggled || noVelo) return;
-    if (packet.func_149410_e() != 28000 || packet.func_149412_c() != Player.getPlayer().func_145782_y()) return;
-    cancel(event)
-    noVelo = true
-}).setFilteredClass(S12PacketEntityVelocity)
