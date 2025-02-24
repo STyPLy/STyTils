@@ -24,7 +24,7 @@ register("tick",()=>{
         toggled = false;
         Player.getPlayer().func_70107_b(Player.getX(),Player.getY()-distance,Player.getZ())
         
-        Client.scheduleTask(80,()=>{
+        Client.scheduleTask(50,()=>{
             trigger?.unregister();
         })
     }
