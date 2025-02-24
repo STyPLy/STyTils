@@ -1,4 +1,15 @@
-import { Color,@ColorProperty,@SwitchProperty,@SliderProperty,@Vigilant,@TextProperty} from '../Vigilance/index';
+const f = FileLib.read("Vigilance", "index.js");
+const a = "const isIntegerDesired = attributes.type === PropertyType.SLIDER || attributes.type === PropertyType.SELECTOR;\n";
+const b = "const isIntegerDesired = [PropertyType.SLIDER, PropertyType.SELECTOR, PropertyType.NUMBER].includes(attributes.type);\n";
+if (f.includes(a)) {
+	FileLib.write("Vigilance", "index.js", f.replace(a, b));
+	const trigger = register("worldLoad", () => {
+		trigger.unregister();
+		ChatTriggers.reloadCT();
+	});
+}
+
+import { Color,@ColorProperty,@SwitchProperty,@SliderProperty,@Vigilant,@TextProperty, @NumberProperty} from '../Vigilance/index';
 
 @Vigilant('STyTils', '§bSTyTils', {
     getCategoryComparator: () => (a, b) => {
@@ -143,6 +154,37 @@ class Config {
     noInteract = false;
 
     @SwitchProperty({
+        name: "Set Speed",
+        description: "Change your speed attribute.",
+        category: "Misc"
+    })
+    setSpeed = false;
+
+    @NumberProperty({
+        name: "Speed",
+        description: "Speed of Set Speed (doesnt work if best speed is on)",
+        category: "Misc",
+        min: 1,
+        max: 515,
+        increment: 5
+    })
+    speed = 400;
+
+    @SwitchProperty({
+        name: "Use Best Speed",
+        description: "Adds +15 speed to ur current speed (best for wd)",
+        category: "Misc",
+    })
+    bestSpeed = true;
+
+    @SwitchProperty({
+        name: "Auto Gift",
+        description: "Automatically open gifts",
+        category: "Misc"
+    })
+    autoGift = false;
+
+    @SwitchProperty({
         name: "Hide Profile ID",
         description: "Hides profile ID on world load.",
         category: "Misc"
@@ -177,13 +219,6 @@ class Config {
     })
     abilityAlert = false
 
-    @SwitchProperty({
-        name: "Auto Gift",
-        description: "Automatically open gifts",
-        category: "Misc"
-    })
-    autoGift = false;
-
 
     constructor() {
         this.initialize(this);
@@ -193,6 +228,7 @@ class Config {
         this.addDependency("Aatrox XP buff", "Slayer Counter")
         this.addDependency("Queue Command List", "Queue Commands")
         this.addDependency("Auto Fire Freeze", "Fire Freeze Alert (M3)")
+        this.addDependency("Speed", "Set Speed")
     }
 
 }

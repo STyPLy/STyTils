@@ -10,6 +10,7 @@ import './features/misc/hideProfileID'
 import './features/misc/partyHider'
 import './features/misc/hideServer'
 import './features/misc/autoGift'
+import './features/misc/setSpeed'
 
 import './features/dungeons/fireFreeze'
 import './features/dungeons/ghostPick'
