@@ -13,7 +13,7 @@ import { Color,@ColorProperty,@SwitchProperty,@SliderProperty,@Vigilant,@TextPro
 
 @Vigilant('STyTils', '§bSTyTils', {
     getCategoryComparator: () => (a, b) => {
-        const categories = ['Shitter List','Queue Commands', "Counters", "Dungeons" ,"Misc"];
+        const categories = ['Shitter List','Queue Commands', "Counters", "Dungeons", "Random Shit", "Misc"];
         return categories.indexOf(a.name) - categories.indexOf(b.name);
     }
 })
@@ -156,14 +156,14 @@ class Config {
     @SwitchProperty({
         name: "Set Speed",
         description: "Change your speed attribute.",
-        category: "Misc"
+        category: "Random Shit"
     })
     setSpeed = false;
 
     @NumberProperty({
         name: "Speed",
         description: "Speed of Set Speed (doesnt work if best speed is on)",
-        category: "Misc",
+        category: "Random Shit",
         min: 1,
         max: 515,
         increment: 5
@@ -173,16 +173,23 @@ class Config {
     @SwitchProperty({
         name: "Use Best Speed",
         description: "Adds +15 speed to ur current speed (best for wd)",
-        category: "Misc",
+        category: "Random Shit",
     })
     bestSpeed = true;
 
     @SwitchProperty({
         name: "Auto Gift",
         description: "Automatically open gifts",
-        category: "Misc"
+        category: "Random Shit"
     })
     autoGift = false;
+
+    @SwitchProperty({
+        name: "Ability Alert",
+        description: "Alert when ability ready",
+        category: "Random Shit"
+    })
+    abilityAlert = false
 
     @SwitchProperty({
         name: "Hide Profile ID",
@@ -211,13 +218,6 @@ class Config {
         category: "Misc"
     })
     team = "";
-
-    @SwitchProperty({
-        name: "Ability Alert",
-        description: "Alert when ability ready",
-        category: "Misc"
-    })
-    abilityAlert = false
 
 
     constructor() {
