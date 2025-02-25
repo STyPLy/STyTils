@@ -18,6 +18,9 @@ import { Color,@ColorProperty,@SwitchProperty,@SliderProperty,@Vigilant,@TextPro
     }
 })
 class Config {
+
+    // SHITTER LIST \\
+
     @SwitchProperty({
         name:"Auto Shitter",
         description: "Adds mfs to shitter list after a certain amount of deaths",
@@ -71,6 +74,8 @@ class Config {
     })
     partyScanner = false
 
+    // QUEUE COMMANDS \\
+
     @SwitchProperty({
         name:"Queue Commands",
         description: "Queues commands when you join a new lobby.",
@@ -84,6 +89,8 @@ class Config {
         category: "Queue Commands"
     })
     commandList = ""
+
+    // COUNTERS \\
 
     @SwitchProperty({
         name: "Slayer Counter",
@@ -109,7 +116,7 @@ class Config {
     })
     tier = 4;
 
-    
+    // DUNGEONS \\
 
     @SwitchProperty({
         name: "Fire Freeze Alert (M3)",
@@ -134,10 +141,17 @@ class Config {
 
     @SwitchProperty({
         name: "Boss Clip",
-        description: "Instant enter p2 on f7",
+        description: "Instant enter p2 on f7/m7",
         category: "Dungeons"
     })
     bossClip = false;
+
+    @SwitchProperty({
+        name: "Auto Wish",
+        description: "Automatically wishes (healer ult) in f7/m7",
+        category: "Dungeons"
+    })
+    autoWish = false;
 
     @SwitchProperty({
         name: "Pearl Refill",
@@ -146,12 +160,7 @@ class Config {
     })
     refillPearl = false
 
-    @SwitchProperty({
-        name: "No Pearl Interact",
-        description: "Disables pearl interaction",
-        category: "Dungeons"
-    })
-    noInteract = false;
+    // RANDOM SHIT \\
 
     @SwitchProperty({
         name: "Set Speed",
@@ -190,6 +199,15 @@ class Config {
         category: "Random Shit"
     })
     abilityAlert = false
+
+    // MISC \\
+
+    @SwitchProperty({
+        name: "No Pearl Interact",
+        description: "Disables pearl interaction",
+        category: "Misc"
+    })
+    noInteract = false;
 
     @SwitchProperty({
         name: "Hide Profile ID",
