@@ -40,7 +40,7 @@ register("command", (command,ign) => {
             ChatLib.chat("&b[STyTils] Cleared the blacklist.")
             break;
         default:
-            ChatLib.chat("&b[STyTils] USAGE: /whitelist <add/remove/list/clear>")
+            ChatLib.chat("&b[STyTils] USAGE: /blacklist <add/remove/list/clear>")
             break;
 
     }

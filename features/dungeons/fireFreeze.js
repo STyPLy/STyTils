@@ -1,4 +1,5 @@
 import config from '../../config'
+import { rightClick } from '../../utils'
 const S02PacketChat = Java.type("net.minecraft.network.play.server.S02PacketChat")
 
 function AutoFreeze() {
@@ -6,7 +7,7 @@ function AutoFreeze() {
     let FF = false
     let ffIndex
     inventory.forEach((item,index)=>{
-        if (item?.getName()?.includes("Fire Freeze") && index < 9) {
+        if (item?.getName()?.includes("Fire Freeze") && index < 9 && index > -1) {
             FF = true;
             ffIndex = index
         }
@@ -14,23 +15,20 @@ function AutoFreeze() {
     if (!FF) return;
     
     Player.setHeldItemIndex(ffIndex)
-    if (Player.getHeldItem().getName().includes("Fire Freeze")) {
-        let rc = Client.getMinecraft().class.getDeclaredMethod('func_147121_ag')
-        rc.setAccessible(true)
-        setTimeout(()=>{
-            rc.invoke(Client.getMinecraft())
-        },50)
+
+    if (Player.getHeldItem()?.getName().includes("Fire Freeze")) {
+        rightClick()
     }
        
 }
 
-register("packetReceived", (packet, event)=>{
+register("packetReceived", (packet, _)=>{
+    if (!config.FireFreeze) return;
     if (packet.func_148916_d()) return
 
     const chatComponent = packet.func_148915_c()
     const formatted = chatComponent.func_150254_d().removeFormatting()
     if (formatted !== "[BOSS] The Professor: Even if you took my barrier down, I can still fight.") return;
-    if (!config.FireFreeze) return;
 
     setTimeout(()=> {
 

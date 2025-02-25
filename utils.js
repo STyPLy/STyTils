@@ -54,3 +54,39 @@ export function getKeybind(keyName) {
         console.log(e)
     }
 }
+
+export function rightClick() {
+    let rc = Client.getMinecraft().class.getDeclaredMethod('func_147121_ag')
+    rc.setAccessible(true)
+    Client.scheduleTask(0,()=>{
+        rc.invoke(Client.getMinecraft())
+    })
+}
+
+/*
+takes ct player object
+returns class shit
+*/
+export function getClass(player) {
+
+    let tab = TabList.getNames()
+    for (let i = 0; i < tab.length; i++) {
+        let line = tab[i]?.removeFormatting()
+
+
+        if (line.includes(player?.getName())) {
+            return line.substring((line.indexOf("(")) + 1)
+        }
+    }
+}
+
+export function nameToEntity(username) {
+    let players = World.getAllPlayers();
+
+    for (let i = 0; i < players.length; i++) {
+        let player = players[i];
+        if (player?.name == username) return player;
+    }
+
+   return null;
+}
