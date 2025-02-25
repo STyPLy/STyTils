@@ -20,6 +20,7 @@ import './features/dungeons/bossClip'
 import './features/dungeons/refillPearl'
 import './features/dungeons/noInteract'
 import './features/dungeons/autoWish'
+import './features/dungeons/earlyEnter'
 
 import config from "./config"
 // Main Command

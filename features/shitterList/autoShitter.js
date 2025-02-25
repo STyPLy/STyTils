@@ -4,12 +4,8 @@ let Deaths = {}
 
 
 register("worldLoad",()=> {
-    if (!inDungeon()) {
-        Deaths = {}
-    }
+    Deaths = {}
 })
-
-
 
 register("chat", (name,event) => {  
     if (!inDungeon()) return;

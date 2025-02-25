@@ -153,6 +153,14 @@ class Config {
     })
     autoWish = false;
 
+
+    @SwitchProperty({
+        name: "Early Enter Announce",
+        description: "Announces when someone is at an Early Enter",
+        category: "Dungeons"
+    })
+    earlyEnterAnounce = false;
+
     @SwitchProperty({
         name: "Pearl Refill",
         description: "Automatically refills pearls when you run out",

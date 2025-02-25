@@ -64,17 +64,17 @@ export function rightClick() {
 }
 
 /*
-takes ct player object
-returns class shit
+takes username: string
+returns first letter of dungeon class
 */
-export function getClass(player) {
+export function getClass(username) {
 
     let tab = TabList.getNames()
     for (let i = 0; i < tab.length; i++) {
         let line = tab[i]?.removeFormatting()
 
 
-        if (line.includes(player?.getName())) {
+        if (line.includes(username)) {
             return line.substring((line.indexOf("(")) + 1).charAt(0)
         }
     }

@@ -19,7 +19,7 @@ register("packetReceived", (packet, event) =>{
     const formatted = chatComponent.func_150254_d().removeFormatting()
     if (!validMessages.includes(formatted)) return;
     
-    let currentClass = getClass(Player)
+    let currentClass = getClass(Player.getName())
     if (currentClass !== "H") return;
 
     Client.sendPacket(new C07PacketPlayerDigging(C07PacketPlayerDigging.Action.DROP_ITEM,BlockPosition.field_177992_a,EnumFacing.DOWN))
