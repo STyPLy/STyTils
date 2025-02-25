@@ -22,7 +22,7 @@ function AutoFreeze() {
        
 }
 
-register("packetReceived", (packet, _)=>{
+register("packetReceived", (packet, event)=>{
     if (!config.FireFreeze) return;
     if (packet.func_148916_d()) return
 

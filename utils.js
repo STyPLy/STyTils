@@ -75,7 +75,7 @@ export function getClass(player) {
 
 
         if (line.includes(player?.getName())) {
-            return line.substring((line.indexOf("(")) + 1)
+            return line.substring((line.indexOf("(")) + 1).charAt(0)
         }
     }
 }
