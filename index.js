@@ -21,6 +21,7 @@ import './features/dungeons/refillPearl'
 import './features/dungeons/noInteract'
 import './features/dungeons/autoWish'
 import './features/dungeons/earlyEnter'
+import './features/dungeons/vertJerry'
 
 import config from "./config"
 // Main Command

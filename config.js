@@ -153,6 +153,20 @@ class Config {
     })
     autoWish = false;
 
+    @SwitchProperty({
+        name: "Auto leap",
+        description: "Leaps to an early enter",
+        category: "Dungeons"
+    })
+    autoLeap = false;
+
+    @SwitchProperty({
+        name: "Vertical Jerrychine",
+        description: "Cancels all x & z motion from jerrychine",
+        category: "Dungeons"
+    })
+    vertJerry = false;
+
 
     @SwitchProperty({
         name: "Early Enter Announce",
