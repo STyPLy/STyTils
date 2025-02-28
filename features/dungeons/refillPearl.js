@@ -3,7 +3,7 @@ import { inDungeon } from "../../utils";
 
 register("step",()=>{
     if(!config.refillPearl) return;
-    if (!inDungeon()) return;
+    if (!inDungeon() || Player.getPlayer().field_71075_bZ.field_75101_c) return;
     if (Player?.getContainer()?.size !== 45) return;
 
     let inventory = Player.getInventory().getItems()
