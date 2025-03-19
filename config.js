@@ -209,6 +209,21 @@ class Config {
     bestSpeed = true;
 
     @SwitchProperty({
+        name: "No Rotate",
+        description: "Cancels server rotations",
+        category: "Random Shit"
+    })
+    noRotate = false;
+
+    @SwitchProperty({
+        name: "Keep Motion",
+        description: "Keep Motion when getting teleported",
+        category: "Random Shit"
+    })
+    keepMotion = false;
+
+
+    @SwitchProperty({
         name: "Auto Gift",
         description: "Automatically open gifts",
         category: "Random Shit"
@@ -269,6 +284,7 @@ class Config {
         this.addDependency("Queue Command List", "Queue Commands")
         this.addDependency("Auto Fire Freeze", "Fire Freeze Alert (M3)")
         this.addDependency("Speed", "Set Speed")
+        this.addDependency("Keep Motion", "No Rotate")
     }
 
 }

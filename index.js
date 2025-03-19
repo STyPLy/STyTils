@@ -22,6 +22,7 @@ import './features/dungeons/noInteract'
 import './features/dungeons/autoWish'
 import './features/dungeons/earlyEnter'
 import './features/dungeons/vertJerry'
+import './features/dungeons/noRotate'
 
 import config from "./config"
 // Main Command
