@@ -20,13 +20,13 @@ function leapToEarlyEnter() {
         Client.scheduleTask(0,()=>{
             Client.sendPacket(new C0DPacketCloseWindow(Player.getContainer().getWindowId()));
         })
-        return;
     };
     
     // Find Leap
     let inventory = Player.getInventory().getItems()
     let leap = false
     let leapIndex
+    let prevIndex = Player.getHeldItemIndex();
     inventory.forEach((item,index)=>{
         if (item?.getName()?.toLowerCase()?.includes("leap") && index < 9 && index > -1) {
             leap = true;
@@ -61,6 +61,7 @@ function leapToEarlyEnter() {
 
                 setTimeout(()=>{
                     Client.sendPacket(new C0EPacketClickWindow(windowId,slot,0,0,null,0))
+                    Client.scheduleTask(0,()=>Player.setHeldItemIndex(prevIndex));
                 },350)
                 slotRegister.unregister();
                 
@@ -82,11 +83,22 @@ function leapToEarlyEnter() {
 }
 
 
-let trigger = register("packetReceived",(packet,event)=>{
+let awaitChat = register("packetReceived",(packet,event)=>{
     if (packet.func_148916_d() || !inDungeon()) return;
     
     const chatComponent = packet.func_148915_c();
     const formatted = chatComponent.func_150254_d().removeFormatting();
+
+    if (formatted == "[BOSS] Goldor: Who dares trespass into my domain?") {
+        areas = {
+            "SS": [107,120,93,110,120,94],
+            "Early Enter 2": [55,107,129,60,110,133],
+            "Early Enter 3": [0,108,102,3,112,106],
+            "Early Enter 4": [50,113,50,58,117,54],
+            "Core": [49,111,55,60,118,60]
+        };
+        return;
+    }
 
     let match = formatted.match(/^.+? activated a (?:lever|terminal)! \((\d)\/(\d)\)/);
     if (!match) return;
@@ -96,7 +108,7 @@ let trigger = register("packetReceived",(packet,event)=>{
 
     if (termCompleted === maxTerm) {
         leapToEarlyEnter();
-        trigger.unregister();
+        awaitChat.unregister();
     } 
     
 }).setFilteredClass(S02PacketChat).unregister();
@@ -119,7 +131,7 @@ register("tick",()=>{
     for (let i = 0; i < players.length; i++) {
         const player = players[i];
         const username = player?.name;
-        if (username == Player.getName() || username?.split(" ")?.length > 1 || !username) continue;
+        if (username?.split(" ")?.length > 1 || !username) continue;
 
         const pos = [player?.x, player?.y, player?.z];
 
@@ -132,15 +144,14 @@ register("tick",()=>{
         if (!playerAreaEntry) continue;
         const [key] = playerAreaEntry;
 
-        if (config.earlyEnterAnounce) ChatLib.command(`pc ${username} is At ${key}`);
+        if (config.earlyEnterAnounce && username !== Player.getName()) ChatLib.command(`pc ${username} is At ${key}`);
         
-        earlyEnter = username;
         delete areas[key];
-
-        if (!config.autoLeap) return;
-
-        if (key.includes("Early Enter"))
-            trigger.register();
+        if (config.autoLeap) {
+            earlyEnter = username;
+            awaitChat.register();
+        }
+        
     }
 
 })
