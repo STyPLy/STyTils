@@ -28,7 +28,6 @@ register("packetReceived",(packet,event)=>{
     }
     
     Client.scheduleTask(0,()=>{
-        Player?.getPlayer()?.func_70101_b(prevYaw,prevPitch);
         Client.sendPacket(new C03PacketPlayer.C06PacketPlayerPosLook(
             Player.getX(),
             Player.getPlayer().func_174813_aQ().field_72338_b,
