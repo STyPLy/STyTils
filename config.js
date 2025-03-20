@@ -229,6 +229,13 @@ class Config {
     })
     ignorePitch = false;
 
+    @SwitchProperty({
+        name: "Omni Sprint",
+        description: "Run in all directions",
+        category: "Random Shit"
+    })
+    omniSprint = false;
+
 
     @SwitchProperty({
         name: "Auto Gift",

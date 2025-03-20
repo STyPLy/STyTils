@@ -23,6 +23,7 @@ import './features/dungeons/autoWish'
 import './features/dungeons/earlyEnter'
 import './features/dungeons/vertJerry'
 import './features/dungeons/noRotate'
+import './features/dungeons/omniSprint'
 
 import config from "./config"
 // Main Command
