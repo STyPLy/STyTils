@@ -222,6 +222,12 @@ class Config {
     })
     keepMotion = false;
 
+    @SwitchProperty({
+        name: "Ignore 0 Pitch",
+        description: "basically makes no rotate useless :thumbsup:",
+        category: "Random Shit"
+    })
+
 
     @SwitchProperty({
         name: "Auto Gift",
@@ -279,12 +285,19 @@ class Config {
         this.initialize(this);
         this.addDependency("Auto Shitter Deaths","Auto Shitter")
         this.addDependency("Failed Puzzle", "Auto Shitter")
+        
         this.addDependency("Shitter Message", "Join Message")
+
         this.addDependency("Aatrox XP buff", "Slayer Counter")
+
         this.addDependency("Queue Command List", "Queue Commands")
+
         this.addDependency("Auto Fire Freeze", "Fire Freeze Alert (M3)")
+
         this.addDependency("Speed", "Set Speed")
+
         this.addDependency("Keep Motion", "No Rotate")
+        this.addDependency("Ignore 0 Pitch", "No Rotate")
     }
 
 }

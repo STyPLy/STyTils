@@ -5,13 +5,6 @@ const C03PacketPlayer = Java.type("net.minecraft.network.play.client.C03PacketPl
 
 register("packetReceived",(packet,event)=>{
     if (!config.noRotate || !Player?.getPlayer()) return;
-    cancel(event)
-
-    let [prevYaw, prevPitch] = [
-        Player.getPlayer()?.field_70126_B,
-        Player.getPlayer()?.field_70127_C
-    ];
-    
     let [x, y, z, yaw, pitch] = [
         packet.func_148932_c(),
         packet.func_148928_d(),
@@ -19,7 +12,11 @@ register("packetReceived",(packet,event)=>{
         packet.func_148931_f(),
         packet.func_148930_g()
     ];
-    
+
+    if (Math.floor(pitch) === 0 && config.ignorePitch) return;
+
+    cancel(event)
+
     // Teleport Player (no rotate)
     Player?.getPlayer()?.func_70107_b(x,y,z)
     
@@ -43,8 +40,8 @@ register("packetReceived",(packet,event)=>{
             Player.getX(),
             Player.getPlayer().func_174813_aQ().field_72338_b,
             Player.getZ(),
-            prevYaw,
-            prevPitch,
+            Player.getYaw(),
+            Player.getPitch(),
             false
         ));
     })
