@@ -13,7 +13,7 @@ register("packetReceived",(packet,event)=>{
         packet.func_148930_g()
     ];
 
-    if (Math.floor(pitch) === 0 && config.ignorePitch) return;
+    if (Math.floor(Math.abs(pitch)) === 0 && config.ignorePitch) return;
 
     cancel(event)
 

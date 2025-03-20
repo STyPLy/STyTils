@@ -227,6 +227,7 @@ class Config {
         description: "basically makes no rotate useless :thumbsup:",
         category: "Random Shit"
     })
+    ignorePitch = false;
 
 
     @SwitchProperty({
