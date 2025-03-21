@@ -34,15 +34,5 @@ register("packetReceived",(packet,event)=>{
     config.keepMotion 
         ? Player.getPlayer().func_70016_h(Player.getMotionX(),0,Player.getMotionZ())
         : Player.getPlayer().func_70016_h(0,0,0);
-    // Update server with new rotation info
-    Client.scheduleTask(0,()=>{
-        Client.sendPacket(new C03PacketPlayer.C06PacketPlayerPosLook(
-            Player.getX(),
-            Player.getPlayer().func_174813_aQ().field_72338_b,
-            Player.getZ(),
-            Player.getYaw(),
-            Player.getPitch(),
-            false
-        ));
-    })
+    
 }).setFilteredClass(S08PacketPlayerPosLook)
